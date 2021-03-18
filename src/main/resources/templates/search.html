@@ -14,14 +14,16 @@
         <h2>Search by:</h2>
 
         <p>
-            <span th:each="column : ${columns}">
+            <span th:each="item : ${columns}">
                 <input
                         type="radio"
                         name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
-                <label th:for="${column.key}" th:text="${column.value}"></label>
+
+                        th:id="${item.key}"
+
+                        th:value="${item.key}"
+                        th:checked="${item.key == 'all'}"/>
+                <label th:for="${item.key}" th:text="${item.value}"></label>
             </span>
 
         </p>
@@ -37,6 +39,47 @@
     <hr />
 
     <!-- TODO #4 - Loop over the search results to display all job fields. -->
+
+
+    <table th:each="job : ${results}" style="margin:40px; width:50%">
+        <tr>
+            <td>ID: </td>
+            <td th:text="${job.id}">ID: </td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+            <td th:text="${job.name}">Name: </td>
+        </tr>
+        <tr>
+            <td>Employer: </td>
+            <td>
+                <a th:href="@{/search/results(type=employer,value=${job.employer})}" th:text="${job.employer}">Employer: </a>
+
+            </td>
+        </tr>
+        <tr>
+            <td>Location: </td>
+            <td>
+                <a th:href="@{/search/results(type=location,value=${job.location})}" th:text="${job.location}">Location: </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Position Type: </td>
+            <td>
+                <a th:href="@{/search/results(type=positionType,value=${job.positionType})}" th:text="${job.positionType}">Position Type: </a>
+            </td>
+        </tr>
+        <tr>
+            <td>Skill: </td>
+            <td>
+                <a th:href="@{/search/results(type=coreCompetency,value=${job.coreCompetency})}" th:text="${job.coreCompetency}">Skill: </a>
+            </td>
+        </tr>
+
+
+    </table>
+
+
 
 </div>
 

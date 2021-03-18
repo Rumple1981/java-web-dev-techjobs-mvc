@@ -14,7 +14,10 @@
     TODO   This page needs to show full job listings
     TODO  —ID, name, employer, location, position type, skill-->
 
-    <table th:each="job : ${jobs}" style="margin:40px; width:50%">
+
+
+
+    <table class="job-listing" th:each="job : ${jobs}" style="margin:40px; width:50%">
             <tr>
                 <td>ID: </td>
                 <td th:text="${job.id}">ID: </td>
@@ -50,6 +53,8 @@
 
 
     </table>
+
+
 
 
 </div>
